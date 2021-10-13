@@ -4,16 +4,20 @@ $.fn.lengthCheckInput = function (options) {
         message: "",
     }, options);
     this.each(function () {
-        const $self = $(this);
+        // Vanilla JS in jQuery plugin
+        // jQuery をモジュールシステムとしてのみ使うようにしていく
+        const error = document.createElement('div');
+        error.setAttribute('class', 'error');
+        error.style.display = 'none';
+        this.append(error);
 
-        const $error = $('<div class="error">').hide();
-        $self.append($error);
-
-        $self.find('input').on('input', function () {
-            if ($(this).val().length > options.max) {
-                $error.text(options.message).show();
+        const input = this.getElementsByTagName('input').item(0);
+        input.addEventListener('input', function () {
+            if (this.value.length > options.max) {
+                error.innerText = options.message;
+                error.style.display = 'block';
             } else {
-                $error.hide();
+                error.style.display = 'none';
             }
         });
     });
