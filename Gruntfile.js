@@ -9,9 +9,9 @@ module.exports = function(grunt) {
             index: {
                 src: [
                     'node_modules/jquery/dist/jquery.min.js',
-                    'assets/js/index.js'
+                    'assets/js/length-check-input.js'
                 ],
-                dest: 'public/assets/dist/js/index.min.js'
+                dest: 'public/assets/dist/js/all.min.js'
             }
         },
         cssmin: {
@@ -20,8 +20,9 @@ module.exports = function(grunt) {
             },
             index: {
                 files: {
-                    'public/assets/dist/css/index.min.css': [
+                    'public/assets/dist/css/all.min.css': [
                         'node_modules/normalize.css/normalize.css',
+                        'assets/css/common.css',
                         'assets/css/index.css'
                     ]
                 }
