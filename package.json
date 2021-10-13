@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "grunt"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.4.1",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-uglify": "^5.0.1"
+  }
+}
