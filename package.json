@@ -6,8 +6,11 @@
     "build-prod": "webpack --mode=production"
   },
   "dependencies": {
+    "css-minimizer-webpack-plugin": "^3.1.1",
     "jquery": "^3.6.0",
-    "normalize.css": "^8.0.1"
+    "mini-css-extract-plugin": "^2.4.2",
+    "normalize.css": "^8.0.1",
+    "terser-webpack-plugin": "^5.2.4"
   },
   "devDependencies": {
     "css-loader": "^6.4.0",

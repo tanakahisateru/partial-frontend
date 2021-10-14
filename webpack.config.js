@@ -1,5 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = (env, argv) => {
 
@@ -14,12 +17,16 @@ module.exports = (env, argv) => {
             filename: prod ? '[name]-[contenthash].js' : '[name].js',
             clean: true,
         },
-        devtool: prod ? 'source-map' : 'eval',
+        devtool: prod ? 'source-map' : 'cheap-module-source-map',
+        // devtool: 'eval' では css ファイルにソースマップ付かない
         module: {
             rules: [
                 {
                     test: /\.css$/i,
-                    use: ['style-loader', 'css-loader']
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader'
+                    ]
                 }
             ]
         },
@@ -27,7 +34,17 @@ module.exports = (env, argv) => {
             new webpack.ProvidePlugin({
                 $: 'jquery',
                 jQuery: 'jquery'
-            })
-        ]
+            }),
+            new MiniCssExtractPlugin({
+                filename: prod ? '[name]-[contenthash].min.css' : '[name].css',
+            }),
+        ],
+        optimization: {
+            minimize: prod,
+            minimizer: [
+                new TerserPlugin(),
+                new CssMinimizerPlugin(),
+            ],
+        },
     };
 };
