@@ -1,8 +1,10 @@
 import React from "react";
+import {useAtom} from "jotai";
 
-export default function LengthCheckInput ({id, useStore}) {
+export default function LengthCheckInput ({id, textState, errorState, message}) {
 
-    const {text, error, message, setText} = useStore();
+    const [text, setText] = useAtom(textState);
+    const [error] = useAtom(errorState);
 
     return <>
         <label htmlFor={id + "-input"}>Text</label>
