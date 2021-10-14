@@ -6,6 +6,8 @@
     "build-prod": "webpack --mode=production"
   },
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "css-minimizer-webpack-plugin": "^3.1.1",
     "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.4.2",
