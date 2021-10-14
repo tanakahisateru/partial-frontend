@@ -1,4 +1,6 @@
 /* index 固有のスタイル */
-.index-page .length-check-input {
-    margin-top: 2rem;
+.index-page {
+    &.length-check-input {
+        margin-top: 2rem;
+    }
 }

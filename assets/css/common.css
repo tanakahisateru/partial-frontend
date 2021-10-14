@@ -1,15 +1,18 @@
 .length-check-input {
     margin: 1rem .5rem;
-}
-.length-check-input label {
-    display: block;
-    font-weight: bold;
-    margin: 0.1rem 0;
-}
-.length-check-input input {
-    display: block;
-    max-width: 10rem;
-}
-.length-check-input .error {
-    color: #ff0000;
+
+    & label {
+        display: block;
+        font-weight: bold;
+        margin: 0.1rem 0;
+    }
+
+    & input {
+        display: block;
+        max-width: 10rem;
+    }
+
+    & .error {
+        color: #ff0000;
+    }
 }
