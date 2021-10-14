@@ -11,9 +11,5 @@
     max-width: 10rem;
 }
 .length-check-input .error {
-    display: none;
     color: #ff0000;
-}
-.length-check-input .error.error--shown {
-    display: block;
 }

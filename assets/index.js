@@ -11,6 +11,3 @@ window.$ = jQuery;
 // window 代入のこれがないと HTML では $ が使えない
 
 import './js/length-check-input';
-
-import './stimulus-bootstrap';
-import './controllers/length_check_controller';
