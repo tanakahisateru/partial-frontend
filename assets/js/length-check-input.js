@@ -1,5 +1,6 @@
 import React, {createElement} from "react";
 import ReactDOM from 'react-dom';
+import create from "zustand";
 import LengthCheckInput from './components/LengthCheckInput';
 
 $.fn.lengthCheckInput = function (options) {
@@ -9,9 +10,24 @@ $.fn.lengthCheckInput = function (options) {
     }, options);
 
     this.each(function () {
-        ReactDOM.render(
-            createElement(LengthCheckInput, { id: this.id, ...options}),
-            this
-        );
+
+        const useStore = create(set => ({
+            text: "",
+            error: false,
+            message: options.message,
+
+            setText(text) {
+                const error = text.length > options.max;
+                set(() => ({
+                    text: text,
+                    error: error
+                }));
+            },
+        }));
+
+        ReactDOM.render(createElement(LengthCheckInput, {
+            id: this.id,
+            useStore: useStore
+        }), this);
     });
 };

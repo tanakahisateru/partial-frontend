@@ -9,7 +9,8 @@
     "@babel/runtime": "^7.15.4",
     "jquery": "^3.6.0",
     "normalize.css": "^8.0.1",
-    "preact": "^10.5.15"
+    "preact": "^10.5.15",
+    "zustand": "^3.5.13"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
