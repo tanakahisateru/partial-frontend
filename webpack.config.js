@@ -8,6 +8,7 @@ const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 module.exports = (env, argv) => {
 
     const prod = argv.mode === 'production';
+    const enablePreact = false;
 
     return {
         entry: {
@@ -41,12 +42,12 @@ module.exports = (env, argv) => {
         },
         resolve: {
             extensions: ["*", ".js", ".jsx", ".json"],
-            alias: {
+            alias: enablePreact ? {
                 "react": "preact/compat",
                 "react-dom/test-utils": "preact/test-utils",
                 "react-dom": "preact/compat",  // Must be below test-utils
                 "react/jsx-runtime": "preact/jsx-runtime"
-            },
+            } : {},
         },
         plugins: [
             new webpack.ProvidePlugin({

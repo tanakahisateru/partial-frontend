@@ -15,13 +15,17 @@ $.fn.lengthCheckInput = function (options) {
 
     this.each(function () {
 
-        const textState = atom("", (get, set, value) => {
-            set(textState, value);
-            sleep(1000).then(() => {
-                set(errorState, value.length > options.max);
-            });
+        const textState = atom("");
+
+        const errorState = atom(async (get) => {
+            const text = get(textState);
+            if (text.length === 0) {
+                return false;
+            }
+            const error = text.length > options.max;
+            await sleep(1000);
+            return error;
         });
-        const errorState = atom(false);
 
         ReactDOM.render(createElement(LengthCheckInput, {
             id: this.id,
