@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 
 module.exports = (env, argv) => {
 
@@ -14,6 +15,7 @@ module.exports = (env, argv) => {
         },
         output: {
             path: path.resolve(__dirname, 'public/assets/dist'),
+            publicPath: 'auto',
             filename: prod ? '[name]-[contenthash].js' : '[name].js',
             clean: true,
         },
@@ -37,6 +39,11 @@ module.exports = (env, argv) => {
             }),
             new MiniCssExtractPlugin({
                 filename: prod ? '[name]-[contenthash].min.css' : '[name].css',
+            }),
+            new WebpackManifestPlugin({
+                fileName: "manifest.json",
+                publicPath: '/assets/dist/',
+                writeToFileEmit: true
             }),
         ],
         optimization: {
