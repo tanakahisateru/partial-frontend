@@ -24,7 +24,7 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.js$/i,
+                    test: /\.jsx?$/i,
                     exclude: /node_modules/,
                     use: [
                         'babel-loader',
@@ -40,7 +40,7 @@ module.exports = (env, argv) => {
             ]
         },
         resolve: {
-            extensions: ["*", ".js", ".json"]
+            extensions: ["*", ".js", ".jsx", ".json"],
         },
         plugins: [
             new webpack.ProvidePlugin({
