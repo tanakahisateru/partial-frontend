@@ -24,6 +24,13 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
+                    test: /\.js$/i,
+                    exclude: /node_modules/,
+                    use: [
+                        'babel-loader',
+                    ],
+                },
+                {
                     test: /\.css$/i,
                     use: [
                         MiniCssExtractPlugin.loader,
@@ -31,6 +38,9 @@ module.exports = (env, argv) => {
                     ]
                 }
             ]
+        },
+        resolve: {
+            extensions: ["*", ".js", ".json"]
         },
         plugins: [
             new webpack.ProvidePlugin({
